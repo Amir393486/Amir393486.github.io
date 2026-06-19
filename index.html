@@ -1,290 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title>Amir's Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+    <title>Amir's portfolio</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #f0f4f8;
-            color: #1a202c;
+        html {
+            scroll-behavior: smooth;
         }
-
-        .container {
-            max-width: 720px;
-            margin: 40px auto;
-            padding: 0 20px 60px;
-        }
-
-        
-        .hero {
-            background: linear-gradient(135deg, #6c3fc5 0%, #1d9e75 100%);
-            border-radius: 20px;
-            padding: 40px 36px;
-            display: flex;
-            align-items: center;
-            gap: 32px;
-            margin-bottom: 20px;
-            color: white;
-        }
-
-        .hero img {
-            width: 110px;
-            height: 138px;
-            object-fit: cover;
-            border-radius: 14px;
-            border: 3px solid rgba(255,255,255,0.4);
-            flex-shrink: 0;
-            display: block;
-        }
-
-        .hero-text h2 {
-            font-size: 28px;
-            font-weight: 700;
-            color: #ffffff;
-            letter-spacing: -0.5px;
-            margin-bottom: 6px;
-        }
-
-        .hero-text .dept {
-            font-size: 14px;
-            color: rgba(255,255,255,0.8);
-            font-style: italic;
-            margin-bottom: 8px;
-        }
-
-        .hero-text .uni-badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            color: #ffffff;
-            font-family: 'Fira Code', monospace;
-            font-size: 12px;
-            padding: 5px 14px;
-            border-radius: 999px;
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-
-        .github-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 14px;
-            background: rgba(255,255,255,0.15);
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 500;
-            padding: 7px 16px;
-            border-radius: 999px;
-            border: 1px solid rgba(255,255,255,0.3);
-            transition: background 0.2s;
-        }
-
-        .github-btn:hover { background: rgba(255,255,255,0.28); }
-
-        /* Cards */
-        .card {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 28px 32px;
-            margin-bottom: 16px;
-            border: 1px solid #e2e8f0;
-        }
-
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-
-        .section-title .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .edu .section-title .dot { background: #7f77dd; }
-        .edu .section-title { color: #534ab7; }
-
-        .skills-sec .section-title .dot { background: #1d9e75; }
-        .skills-sec .section-title { color: #0f6e56; }
-
-        .contact-sec .section-title .dot { background: #d85a30; }
-        .contact-sec .section-title { color: #993c1d; }
-
-        /* Education entries */
-        .edu-entry {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            padding: 14px 0;
-            border-bottom: 1px solid #f1f5f9;
-        }
-        .edu-entry:last-child { border-bottom: none; padding-bottom: 0; }
-        .edu-entry:first-child { padding-top: 0; }
-
-        .edu-icon {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 13px;
-            flex-shrink: 0;
-        }
-
-        .edu-entry:nth-child(1) .edu-icon { background: #EEEDFE; color: #534ab7; }
-        .edu-entry:nth-child(2) .edu-icon { background: #E1F5EE; color: #0f6e56; }
-        .edu-entry:nth-child(3) .edu-icon { background: #FAEEDA; color: #854f0b; }
-
-        .edu-institution { font-weight: 600; font-size: 15px; color: #1a202c; margin-bottom: 2px; }
-        .edu-degree { font-size: 13px; color: #4a5568; }
-        .edu-year { font-size: 11px; font-family: 'Fira Code', monospace; color: #94a3b8; margin-top: 3px; }
-
-        /* Skills */
-        .skill-tags { display: flex; flex-wrap: wrap; gap: 10px; }
-
-        .tag {
-            font-family: 'Fira Code', monospace;
-            font-size: 13px;
-            font-weight: 500;
-            padding: 7px 18px;
-            border-radius: 999px;
-        }
-
-        .tag.c { background: #E6F1FB; color: #185fa5; border: 1px solid #B5D4F4; }
-        .tag.cpp { background: #EEEDFE; color: #534ab7; border: 1px solid #CECBF6; }
-        .tag.java { background: #FAECE7; color: #993c1d; border: 1px solid #F5C4B3; }
-
-        /* Contact */
-        .contact-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 11px 0;
-            border-bottom: 1px solid #f1f5f9;
-        }
-        .contact-row:last-child { border-bottom: none; padding-bottom: 0; }
-        .contact-row:first-child { padding-top: 0; }
-
-        .contact-icon {
-            width: 34px;
-            height: 34px;
-            border-radius: 9px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 15px;
-            flex-shrink: 0;
-        }
-
-        .contact-row:nth-child(1) .contact-icon { background: #E1F5EE; color: #0f6e56; }
-        .contact-row:nth-child(2) .contact-icon { background: #E6F1FB; color: #185fa5; }
-        .contact-row:nth-child(3) .contact-icon { background: #FAEEDA; color: #854f0b; }
-
-        .contact-label { font-size: 11px; color: #94a3b8; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1px; }
-        .contact-value { font-size: 14px; color: #1a202c; }
-
-        a { color: inherit; text-decoration: none; }
     </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
-<body>
-<div class="container">
 
-    <!-- Hero -->
-    <div class="hero">
-        <img src="Picture.JPG" alt="Amir's photo">
-        <div class="hero-text">
-            <h2>Md. Amir Hamza</h2>
-            <p class="dept">Dept. of Computer Science &amp; Engineering</p>
-            <span class="uni-badge">University of Rajshahi</span>
-            <br>
-            <a class="github-btn" href="https://github.com/Amir393486" target="_blank">
-                ⌥ GitHub Profile
-            </a>
+<body style="background-color:#f0f4f8;">
+    <!-- As a heading -->
+    <nav class="navbar">
+        <div class="container-fluid justify-content-end">
+            <ul class="nav me-5">
+                <li class="nav-item me-2">
+                    <a class="nav-link active" aria-current="page" href="#Home">Home</a>
+                </li>
+                <li class="nav-item me-2">
+                    <a class="nav-link" href="#Education">Education</a>
+                </li>
+                <li class="nav-item me-2">
+                    <a class="nav-link" href="#Skills">Skills</a>
+                </li>
+                <li class="nav-item me-2">
+                    <a class="nav-link" href="#Contact">Contact</a>
+                </li>
+                <li class="nav-item me-2">
+                    <a class="nav-link" href="Idol.html">Idol</a>
+                </li>
+            </ul>
         </div>
+    </nav>
+    <nav class="navbar bg-body-tertiary">
+    </nav>
+    <div class="container-fluid">
+
+        <div class="d-flex flex-column justify-content-center align-items-center rounded-5 text-white"
+            style="background: linear-gradient(135deg,#6c3fc5 0%,#1d9e75 100%);">
+            <img src="Picture.JPG" class="rounded-4 border border-3 mt-3"
+                style="width:110px; height:138px; object-fit:cover" ;>
+            <h2 class="fw-bold mb-2">
+                Md. Amir Hamza
+            </h2>
+
+            <p class="fst-italic opacity-75 mb-2">
+                Dept. of Computer Science & Engineering
+            </p>
+            <span class="badge rounded-pill bg-light text-dark p-2 mb-2">
+                University of Rajshahi
+            </span>
+        </div>
+
+        <div class="d-flex flex-column rounded-5 bg-white text-black p-4 mt-4">
+            <h5 class="fw-bold text-uppercase mb-4 text-primary " id="Education">
+                Education
+            </h5>
+            <div class="d-flex gap-3 py-3 border-bottom">
+                <div class="rounded-3 d-flex align-items-center justify-content-center fw-bold"
+                    style="width:40px; height:40px; background:#EEEDFE; color:#534ab7;">
+                    RU
+                </div>
+                <div>
+                    <h6 class="fw-semibold mb-1">
+                        University of Rajshahi
+                    </h6>
+
+                    <p class="text-secondary mb-0">
+                        B.Sc in Computer Science & Engineering
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="d-flex gap-3 py-3  border-bottom">
+
+               <div class="rounded-3 d-flex align-items-center justify-content-center fw-bold"
+                    style="width:40px;height:40px;background:#E1F5EE;color:#0f6e56;">
+                    SC
+                </div>
+                <div>
+                    <h6 class="fw-semibold mb-1">
+                        Savar Government College
+                    </h6>
+
+
+                    <p class="text-secondary mb-0">
+                        H.S.C in Science
+                    </p>
+                </div>
+            </div>
+            <div class="d-flex gap-3 py-3  border-bottom">
+                <div class="rounded-3 d-flex align-items-center justify-content-center fw-bold"
+                    style="width:40px; height:40px; background:#FAEEDA;color:#854f0b;">
+                    TC
+                </div>
+                <div>
+                    <h6 class="fw-semibold mb-1">Tangail Residential School</h6>
+                    <p class="text-secondary mb-1">
+                        S.S.C in Science
+                    </p>
+                </div>
+
+            </div>
+        </div>
+        <div class="d-flex flex-column rounded-5 bg-white text-black p-4 mt-4">
+            <h5 class="fw-bold  mb-4 text-primary " id="Skills">
+                Skills
+            </h5>
+            <div class="d-flex gap-2 flex-wrap">
+
+                <span class="badge bg-primary rounded-pill p-2">
+                    C
+                </span>
+
+                <span class="badge rounded-pill p-2" style="background:#EEEDFE;color:#534ab7;">
+                    C++
+                </span>
+
+
+                <span class="badge rounded-pill p-2" style="background:#FAECE7;color:#993c1d;">
+                    Java
+                </span>
+
+
+            </div>
+
+        </div>
+
+        <div class="d-flex flex-column gap-3 py-3 border-bottom">
+            <div class="rounded-3 d-flex justify-content-center align-items-center">
+            </div>
+
+
+        <div id="Contact" class="card rounded-4 shadow-sm p-4 border-0">
+
+
+            <h6 class="fw-bold text-uppercase mb-4" style="color:#993c1d;">
+                Contact
+            </h6>
+
+            <div class="d-flex gap-3 py-3 border-bottom">
+                <div>
+                    <small class="text-uppercase">
+                        Phone / WhatsApp
+                    </small>
+
+                    <p class="mb-1">
+                        01642037300
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="d-flex gap-3 py-3 border-bottom">
+                <div>
+
+                    <small class="text-uppercase">
+                        Email
+                    </small>
+
+                    <p class="mb-0">
+                        s2410976106@ru.ac.bd
+                    </p>
+
+
+                </div>
+
+            </div>
+
+
+
+            <div class="d-flex gap-3 py-3">
+
+
+                <div>
+
+                    <small class="text-uppercase text-muted">
+                        Location
+                    </small>
+
+                    <p class="mb-0">
+                        Binodpur, Motihar, Rajshahi
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
     </div>
 
-    <!-- Education -->
-    <div class="card edu">
-        <div class="section-title"><span class="dot"></span> Education</div>
 
-        <div class="edu-entry">
-            <div class="edu-icon">RU</div>
-            <div>
-                <p class="edu-institution">University of Rajshahi</p>
-                <p class="edu-degree">B.Sc in Computer Science and Engineering</p>
-            </div>
-        </div>
 
-        <div class="edu-entry">
-            <div class="edu-icon">SC</div>
-            <div>
-                <p class="edu-institution">Savar Government College</p>
-                <p class="edu-degree">H.S.C in Science</p>
-                <p class="edu-year">2021 – 2023</p>
-            </div>
-        </div>
 
-        <div class="edu-entry">
-            <div class="edu-icon">TR</div>
-            <div>
-                <p class="edu-institution">Tangail Residential School</p>
-                <p class="edu-degree">S.S.C in Science</p>
-                <p class="edu-year">2019 – 2021</p>
-            </div>
-        </div>
-    </div>
 
-    <!-- Skills -->
-    <div class="card skills-sec">
-        <div class="section-title"><span class="dot"></span> Skills</div>
-        <div class="skill-tags">
-            <span class="tag c">C</span>
-            <span class="tag cpp">C++</span>
-            <span class="tag java">Java</span>
-        </div>
-    </div>
-
-    <!-- Contact -->
-    <div class="card contact-sec">
-        <div class="section-title"><span class="dot"></span> Contact</div>
-
-        <div class="contact-row">
-            <div class="contact-icon">📞</div>
-            <div>
-                <p class="contact-label">Phone / WhatsApp</p>
-                <p class="contact-value">01642037300</p>
-            </div>
-        </div>
-
-        <div class="contact-row">
-            <div class="contact-icon">✉</div>
-            <div>
-                <p class="contact-label">Email</p>
-                <p class="contact-value">s2410976106@ru.ac.bd</p>
-            </div>
-        </div>
-
-        <div class="contact-row">
-            <div class="contact-icon">📍</div>
-            <div>
-                <p class="contact-label">Location</p>
-                <p class="contact-value">Binodpur, Motihar, Rajshahi</p>
-            </div>
-        </div>
-    </div>
-
-</div>
 </body>
+
 </html>
